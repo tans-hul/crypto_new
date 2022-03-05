@@ -5,6 +5,7 @@ import { Select, Typography, Card, Row, Col, Avatar} from 'antd';
 import moment from 'moment';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
+
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
 
 
@@ -74,4 +75,4 @@ const News = ({ simplified }) => {
   )
 }
 
-// export default News
+export default News

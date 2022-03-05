@@ -1,9 +1,5 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
-// import { createApi } from '@reduxjs/toolkit/query'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-/* React-specific entry point that automatically generates
-   hooks corresponding to the defined endpoints */
-// import { createApi } from '@reduxjs/toolkit/query/react'
 const cryptoNewsHeaders = {
     'x-bingapis-sdk': 'true',
     'x-rapidapi-host': 'bing-news-search1.p.rapidapi.com',
@@ -18,10 +14,10 @@ export const cryptoNewsApi = createApi({
     endpoints: (builder) => ({
         getCryptoNews: builder.query({
             query: ({ newsCategory, count }) => createRequest(`/news/search?q=${newsCategory}&safeSearch=Off&textFormat=Raw&freshness=Day&count=${count}`),
-        }),
-    }),
+        })
+    })
 });
 
 export const {
-     useGetCryptoNewsQuery 
-    } = cryptoNewsApi;
+    useGetCryptoNewsQuery
+} = cryptoNewsApi;

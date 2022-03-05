@@ -4,7 +4,7 @@ import { Typography, Row, Col, Statistic } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
-// import { News } from '.';
+import { News } from '.';
 import { Cryptocurrencies } from '.';
 
 
@@ -47,12 +47,12 @@ const Hoempage = () => {
       <div className='home-heding-container'>
         <Title level={2} className="home-title">Latest News</Title>
         <Title level={2} className="show-more">
-          {/* <Link to="/News">Show more</Link> */}
+          <Link to="/News">Show more</Link>
         </Title>
 
 
       </div>
-      {/* <News simplified /> */}
+      <News simplified />
 
 
     </>
