@@ -1,7 +1,7 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
 // import { Option } from 'rc-select';
-import { Select, Typography, Card, Row, Col, Avatar} from 'antd';
+import { Select, Typography, Card, Row, Col, Avatar } from 'antd';
 import moment from 'moment';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
@@ -17,15 +17,18 @@ const News = ({ simplified }) => {
   const { data } = useGetCryptosQuery(100);
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
 
-  // console.log(cryptoNews);
-  if(!cryptoNews?.value) return 'Loading...'
+  console.log(cryptoNews?.value);
+  // console.log(cryptoNews.queryContext);
+
+
+  if (!cryptoNews?.value) return 'Loading...';
 
   return (
 
 
     <>
-      <Row gutter={[25,25]}>
-      {!simplified &&(
+      <Row gutter={[24, 2]}>
+        {!simplified &&(
         <Col span={24}>
         
         <Select
@@ -43,10 +46,10 @@ const News = ({ simplified }) => {
         </Col>
 
       )}
-          {cryptoNews.value.map((news, i)=>(
+        {cryptoNews?.value.map((news, i)=>(
             <Col xs ={24} sm ={12} lg ={8} key={i}>
               <Card hoverable className="news-card">
-                <a href={news.url} target = "_blank" ref = "noreferrer"></a>
+                <a href={news.url} target = "_blank" rel = "noreferrer"></a>
                 <div className="news-image-container">
                   <Title className='news-title' level={4}>{news.name}</Title>
                   <img style={{maxWidth: '200px', maxHeight: '100px'}} src={news?.image?.thumbnail?.contentUrl } ></img>
@@ -70,6 +73,12 @@ const News = ({ simplified }) => {
 
             </Col>
           ))}
+        {/* {cryptoNews?.value.map((news, i) => (
+          <Col xs={24} sm={12} lg={8} key={i}>
+            <p></p>
+
+          </Col>
+        ))} */}
       </Row>
     </>
   )
